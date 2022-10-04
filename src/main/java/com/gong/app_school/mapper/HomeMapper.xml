@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gong.app_school.mapper.HomeMapper">
+    <select id="selectHome" resultType="com.gong.app_school.pojo.Home">
+        select *
+        from home;
+    </select>
+    <select id="man" resultType="com.gong.app_school.pojo.vo.HomeAndMan">
+        select h.home_name, m.name, m.id
+        from home h,
+             man m
+        where h.old_man_id = m.home_id;
+    </select>
+
+    <select id="mantwo" resultType="com.gong.app_school.pojo.vo.HomeAndManTWO">
+        select m.name
+        from home h,
+             man m
+        where h.old_man_id = m.home_id
+          and h.home_name = #{home_name};
+    </select>
+</mapper>
